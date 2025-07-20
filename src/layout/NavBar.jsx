@@ -13,7 +13,7 @@ export default function Navbar() {
         {user ? (
           <>
             <NavLink to="/account">Account</NavLink>{" "}
-            <button onClick={logout}>Logout</button>
+            <a onClick={logout}>Logout</a>
           </>
         ) : (
           <>

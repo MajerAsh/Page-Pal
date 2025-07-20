@@ -6,7 +6,8 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Account from "./pages/Account.jsx";
 import Error404 from "./pages/Error404";
-import { AuthProvider, useAuth } from "./auth/auth";
+import { AuthProvider, useAuth } from "./Auth/Auth.jsx";
+import "./index.css";
 
 // Simple route guard
 function ProtectedRoute({ children }) {

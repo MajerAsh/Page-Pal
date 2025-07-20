@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-iimport { useAuth } from "../Auth/Auth.jsx";
+import { useAuth } from "../Auth/Auth.jsx";
 
 export default function BookDetails() {
   const { id } = useParams();
@@ -11,7 +11,9 @@ export default function BookDetails() {
   useEffect(() => {
     async function fetchBook() {
       try {
-        const res = await fetch(`/api/books/${id}`);
+        const res = await fetch(
+          `https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${id}`
+        );
         if (!res.ok) throw new Error("Failed to fetch book details");
         const data = await res.json();
         setBook(data);
@@ -27,7 +29,7 @@ export default function BookDetails() {
     try {
       await reserveBook(book.id);
     } catch (err) {
-      alert("Error reserving book: " + err.message);
+      alert(`Sorry but ${book.title} is already check out by another user.`);
     }
   };
 
@@ -46,14 +48,11 @@ export default function BookDetails() {
       {book.coverimage ? (
         <img src={book.coverimage} alt={`Cover of ${book.title}`} />
       ) : (
-        <div style={{ width: "200px", height: "300px", background: "#ccc" }}>
-          <p style={{ padding: "1rem" }}>
-            No cover image available for {book.title}
-          </p>
+        <div>
+          <p>No cover image available for {book.title}</p>
         </div>
       )}
 
-      {/* ✅ INSERT THIS BLOCK HERE */}
       {user ? (
         <button
           onClick={handleReserve}

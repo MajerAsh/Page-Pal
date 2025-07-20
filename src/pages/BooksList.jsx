@@ -18,17 +18,18 @@ export default function BooksList() {
       <ul>
         {books.map((book) => (
           <li key={book.id}>
-            <Link to={`/books/${book.id}`}>{book.title}</Link>
-            <br />
-            <img
-              src={book.coverimage || ""}
-              alt={
-                book.coverimage
-                  ? `${book.title} cover`
-                  : `Cover not available for ${book.title}`
-              }
-              width={100}
-            />
+            <Link to={`/books/${book.id}`}>
+              {book.title}
+              <br />
+              <img
+                src={book.coverimage || ""}
+                alt={
+                  book.coverimage
+                    ? `Cover of ${book.title}`
+                    : `Image not available for ${book.title}`
+                }
+              />
+            </Link>
           </li>
         ))}
       </ul>

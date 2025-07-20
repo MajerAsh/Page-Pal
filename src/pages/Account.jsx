@@ -21,9 +21,12 @@ export default function Account() {
       {user.reservations?.length > 0 ? (
         <ul>
           {user.reservations.map((r) => (
-            <li key={r.id}>
-              <strong>{r.title}</strong> by {r.author}
-              <button onClick={() => returnBook(r.bookid)}>Return</button>
+            <li key={r?.id}>
+              <strong>{r?.title}</strong> by {r?.author}
+              <img src={r?.coverimage} alt={`cover image for ${r?.title}`} />
+              <p>{r?.description}</p>
+              <br />
+              <button onClick={() => returnBook(r?.id)}>Return</button>
             </li>
           ))}
         </ul>
