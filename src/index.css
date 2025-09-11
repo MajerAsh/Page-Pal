@@ -1,36 +1,156 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+/* Reset & Base */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background-color: #d9ecff;
-  color: #212529;
-  line-height: 1.6;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f0f4f8;
+  color: #222;
+  line-height: 1.5;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+main {
   padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Header and Nav */
+header {
+  background: linear-gradient(90deg, #0077cc, #003366);
+  color: white;
+  padding: 1rem 2rem;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
-.container {
-  max-width: 800px;
-  width: 100%;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+header h1 {
+  font-size: 1.75rem;
+  margin: 0;
 }
 
-h1 {
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+nav a {
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+/* Book Cards Grid */
+ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+li {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 1rem;
   text-align: center;
-  background-color: #007bff;
-  color: #ffffff;
 }
 
+li a {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+li img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* Forms */
+form {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: 2px solid #0077cc;
+}
+
+/* Buttons */
+button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Typography */
 h2 {
-  color: #343a40;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 a {
-  color: #007bff;
+  color: #0077cc;
   text-decoration: none;
 }
 
@@ -38,68 +158,20 @@ a:hover {
   text-decoration: underline;
 }
 
-ul {
-  list-style: none;
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+/* Accessibility */
+:focus-visible {
+  outline: 2px dashed #1a73e8;
+  outline-offset: 2px;
+}
 
-  img {
-    align-content: center;
-    max-width: 200px;
-    height: 300px;
-    display: block;
-    border-radius: 1rem;
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-}
 
-li {
-  background-color: #eff4fa;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-img {
-  align-content: center;
-  max-width: 200px;
-  height: 300px;
-  display: block;
-}
-
-form {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-input,
-select {
-  padding: 0.6rem;
-  border: 1px solid #ced4da;
-  border-radius: 2px;
-  font-size: 1rem;
-  transition: border-color 0.2s;
-}
-
-input:focus,
-select:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-button {
-  padding: 0.6rem 1rem;
-  background-color: #007bff;
-  color: white;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-button:hover {
-  background-color: #0056b3;
+  nav {
+    justify-content: flex-start;
+  }
 }

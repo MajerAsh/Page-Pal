@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react"; //anded use context and create cntext 7/20
+import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -115,7 +115,6 @@ export function AuthProvider({ children }) {
   );
 }
 
-//7/20   vvv
 export function useAuth() {
   // the hook
   const context = useContext(AuthContext);

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router"; // ✅ from react-router
+import { useNavigate } from "react-router";
 import { useAuth } from "../Auth/Auth.jsx";
 
 export default function Login() {
   const { login } = useAuth();
-  const navigate = useNavigate(); // ✅
+  const navigate = useNavigate(); //
   const [error, setError] = useState("");
 
   async function handleSubmit(e) {
@@ -15,7 +15,7 @@ export default function Login() {
 
     try {
       await login({ email, password });
-      navigate("/account"); // ✅ redirect on success
+      navigate("/account"); // redirect on success
     } catch (err) {
       setError(err.message || "Login failed. Check your email and password.");
     }
