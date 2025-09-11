@@ -1,4 +1,5 @@
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, useLocation } from "react-router";
+import { useEffect } from "react";
 import Layout from "./Layout/Layout.jsx";
 import BooksList from "./pages/BooksList.jsx";
 import BookDetails from "./pages/BookDetails.jsx";
@@ -9,7 +10,17 @@ import Error404 from "./pages/Error404";
 import { AuthProvider, useAuth } from "./Auth/Auth.jsx";
 import "./index.css";
 
-// Simple route guard
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
+
+  return null;
+}
+
+// route guard
 function ProtectedRoute({ children }) {
   const { user } = useAuth();
   return user ? children : <Navigate to="/login" />;
@@ -18,6 +29,7 @@ function ProtectedRoute({ children }) {
 export default function App() {
   return (
     <AuthProvider>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<BooksList />} />
