@@ -1,6 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 
-/* Reset & Base */
+/* Base */
+
+:root {
+  --bg: #fefefe;
+  --text: #033f63;
+  --header-bg: #033f63;
+  --nav-hover: #28666e;
+  --button: #d1d1b1;
+  --button-hover: #7c9885;
+  --card: #d5e4eb;
+  --card-accent: #a5b8ab;
+  --highlight: #fedc97;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,8 +22,8 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: #f0f4f8;
-  color: #222;
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.5;
   font-size: 16px;
   padding: 0;
@@ -32,7 +45,7 @@ img {
 
 /* Header and Nav */
 header {
-  background: linear-gradient(90deg, #0077cc, #003366);
+  background-color: var(--header-bg);
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -40,11 +53,12 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  border-bottom: 5px solid var(--highlight);
 }
 
 header h1 {
-  font-size: 1.75rem;
-  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 nav {
@@ -62,8 +76,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  text-decoration: none;
+  background-color: var(--nav-hover);
 }
 
 /* Book Cards Grid */
@@ -76,18 +89,19 @@ ul {
 }
 
 li {
-  background-color: white;
+  background-color: var(--card);
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   padding: 1rem;
   text-align: center;
+  border-left: 6px solid var(--card-accent);
 }
 
 li a {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 
@@ -103,10 +117,10 @@ li img {
 form {
   max-width: 400px;
   margin: 2rem auto;
-  background: white;
+  background: var(--card);
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 input {
@@ -119,23 +133,25 @@ input {
 }
 
 input:focus {
-  outline: 2px solid #0077cc;
+  outline: 2px solid var(--highlight);
 }
 
 /* Buttons */
 button {
-  background-color: #0077cc;
-  color: white;
+  background-color: var(--button);
+  color: #033f63;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
   margin-top: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #005fa3;
+  background-color: var(--button-hover);
+  color: white;
 }
 
 button:disabled {
@@ -147,10 +163,11 @@ button:disabled {
 h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: var(--text);
 }
 
 a {
-  color: #0077cc;
+  color: var(--nav-hover);
   text-decoration: none;
 }
 
@@ -160,11 +177,11 @@ a:hover {
 
 /* Accessibility */
 :focus-visible {
-  outline: 2px dashed #1a73e8;
+  outline: 2px dashed var(--highlight);
   outline-offset: 2px;
 }
 
-/* Mobile tweaks */
+/* Mobile */
 @media (max-width: 600px) {
   header {
     flex-direction: column;
