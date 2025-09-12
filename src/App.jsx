@@ -5,6 +5,7 @@ import BooksList from "./pages/BooksList.jsx";
 import BookDetails from "./pages/BookDetails.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import Timeline from "./pages/Timeline.jsx";
 import Account from "./pages/Account.jsx";
 import Error404 from "./pages/Error404";
 import { AuthProvider, useAuth } from "./Auth/Auth.jsx";
@@ -33,7 +34,7 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<BooksList />} />
-          <Route path="books" element={<BooksList />} />
+          <Route path="/timeline" element={<Timeline />} />
           <Route path="books/:id" element={<BookDetails />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

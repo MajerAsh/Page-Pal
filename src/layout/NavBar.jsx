@@ -12,7 +12,8 @@ export default function Navbar() {
         <Logo style={{ width: 28, height: 28, verticalAlign: "middle" }} />
       </h1>
       <nav>
-        <NavLink to="/">Home</NavLink> <NavLink to="/books">Books</NavLink>{" "}
+        <NavLink to="/">Home</NavLink>{" "}
+        {user && <NavLink to="/timeline">Timeline</NavLink>}{" "}
         {user ? (
           <>
             <NavLink to="/account">Account</NavLink>{" "}
