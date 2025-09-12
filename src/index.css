@@ -14,6 +14,18 @@
   --highlight: #fedc97;
 }
 
+[data-theme="dark"] {
+  --bg: #181818;
+  --text: #ebeae8;
+  --header-bg: #222;
+  --nav-hover: #7c9885;
+  --button: #7c9885;
+  --button-hover: #fedc97;
+  --card: #222;
+  --card-accent: #002b46;
+  --highlight: #002b46;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -80,6 +92,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  align-items: center;
 }
 
 nav a {
@@ -112,6 +125,12 @@ li {
   text-align: center;
   border-left: 6px solid var(--card-accent);
   animation: fadeInUp 0.4s ease both;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+li:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px) scale(1.03);
 }
 
 li a {
@@ -169,6 +188,26 @@ input:focus {
 }
 
 /* Buttons */
+.theme-switcher-btn {
+  background: transparent;
+  color: #222;
+  font-size: 1.5rem;
+  border: none;
+  margin-top: 0;
+  margin-left: 1rem;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  transition: background 0.2s;
+}
+
+.theme-switcher-btn:hover,
+.theme-switcher-btn:focus {
+  background: var(--highlight);
+  color: #222;
+}
+
 button {
   background-color: var(--button);
   color: #033f63;
@@ -186,6 +225,7 @@ button {
 
 button:hover {
   background-color: var(--button-hover);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   color: white;
 }
 

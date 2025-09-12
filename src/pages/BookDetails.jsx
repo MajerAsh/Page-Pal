@@ -27,6 +27,7 @@ export default function BookDetails() {
 
   const handleReserve = async () => {
     try {
+      user.reservations = [...(user.reservations || []), { bookid: book.id }]; //9.12.25
       await reserveBook(book.id);
     } catch {
       alert(`Sorry but ${book.title} is already check out by another user.`);
@@ -55,6 +56,7 @@ export default function BookDetails() {
 
       {user ? (
         <button
+          aria-label="Reserve this book"
           onClick={handleReserve}
           disabled={user.reservations?.some((r) => r.bookid === book.id)}
         >

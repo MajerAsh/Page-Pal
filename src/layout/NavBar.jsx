@@ -1,6 +1,7 @@
 import { NavLink } from "react-router";
 import { useAuth } from "../Auth/Auth.jsx";
 import Logo from "../assets/logo.svg?react";
+import ThemeSwitcher from "./ThemeSwitcher.jsx";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -25,6 +26,7 @@ export default function Navbar() {
             <NavLink to="/register">Register</NavLink>
           </>
         )}
+        <ThemeSwitcher />
       </nav>
     </header>
   );
