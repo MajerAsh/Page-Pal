@@ -1,54 +1,65 @@
-# Book Buddy
+# Page Pal
 
-![The landing page of Book Buddy displays a catalog of different books.](/example.png)
+Page Pal is a modern web application that helps users discover, reserve, and manage books from their local library. Designed for a seamless user experience, Page Pal features a responsive interface, secure authentication, and a personal reservation timeline.
 
-Welcome to Book Buddy! Your task is to build out a functional client for [the Book Buddy API](https://fsa-book-buddy-b6e748d1380d.herokuapp.com/docs/). This API holds a catalog of books, which users can reserve or return, once they are logged in.
+## Features
 
-A [live demo of the finished project](https://fsa-book-buddy.netlify.app/) is available for reference.
+- **Book Catalog:** Browse a curated selection of books with cover images, authors, and descriptions.
+- **Book Details:** View detailed information for each book and reserve your favorites.
+- **User Authentication:** Secure registration and login for personalized access.
+- **Reservation Timeline:** Track your reservation history with a visual timeline.
+- **Account Management:** View your profile, current reservations, and high scores.
+- **Responsive Design:** Optimized for desktop and mobile devices.
+- **Error Handling:** Friendly error messages and 404 page for smooth navigation.
 
-## Requirements
+## Tech Stack
 
-### All users should be able to:
+- **Frontend:** React, React Router
+- **Styling:** CSS (custom variables, responsive grid, animations)
+- **Authentication:** JWT-based user authentication
+- **API:** RESTful endpoints for books and user management
 
-- See all books in the library's catalog
-- View details of an individual book
-- Register for a new account
-- Log in to an existing account
+## Getting Started
 
-### Logged in users should be able to:
+1. **Clone the repository:**
 
-- Check out an available book
-- View their profile page, which includes information such as their name and their email
-- See a list of books that they have reserved
-- Return a book they have checked out
+   ```sh
+   git clone https://github.com/yourusername/page-pal.git
+   cd page-pal
+   ```
 
-> [!WARNING]
->
-> The API is _not_ instanced by cohort! Everyone interacts with the same set
-> of books. Please let your instructor know if all of the books are reserved and you
-> cannot make any reservations. Be mindful of this as you work on the project, and
-> try not to reserve too many books at once while you are testing!
+2. **Install dependencies:**
 
-## Recommended Site Layout
+   ```sh
+   npm install
+   ```
 
-While you are free to organize your project however you'd like to meet the requirements, here is a recommended site layout to follow:
+3. **Start the development server:**
 
-`/`, `/books` - list of all books in catalog
+   ```sh
+   npm run dev
+   ```
 
-- each book links to its individual page
+4. **Open your browser:**
+   Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
 
-`/books/:id` - details about the specific book
+## Usage
 
-- if the user is logged in, show a "Reserve" button for the user to check out this book
-- if the book is already reserved, the button should be disabled
+- **Browse Books:** Explore the catalog and click on any book for details.
+- **Reserve Books:** Log in or register to reserve books.
+- **View Timeline:** Access your reservation history from the Timeline page.
+- **Manage Account:** Check your profile and current reservations.
 
-`/account` - profile page
+## Customization
 
-- if the user is not logged in, show them a link to register or log in
-- if the user is logged in, then show their account details such as name and email
-- show a list of all reservations the user has made
-  - in this list, also include a button for users to return the reserved book
+- Update book data or API endpoints in `BooksList.jsx`.
+- Modify styles in `src/index.css` for branding or theme changes.
+- Add new features or pages by extending the React components.
 
-## Submission
+## License
 
-**Make a pull request** from your fork into the main branch of this starter repo. The title of your pull request should include your full name. Submit the link to your _pull request_.
+MIT
+
+---
+
+**Page Pal** — Making library discovery and reservations easy for everyone!
