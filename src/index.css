@@ -179,6 +179,9 @@ button {
   cursor: pointer;
   margin-top: 1rem;
   transition: background-color 0.3s ease;
+  box-shadow: -3px 4px 12px rgba(0, 0, 0, 0.15);
+  border-left: 2px solid rgba(0, 0, 0, 0.18); /* subtle left border */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.18);
 }
 
 button:hover {
