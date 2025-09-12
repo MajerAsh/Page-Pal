@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../Auth/Auth.jsx";
 
 export default function Login() {
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate(); //
   const [error, setError] = useState("");
 
@@ -15,16 +15,21 @@ export default function Login() {
 
     try {
       await login({ email, password });
-      navigate("/account"); // redirect on success
     } catch (err) {
       setError(err.message || "Login failed. Check your email and password.");
     }
   }
 
+  useEffect(() => {
+    if (user) {
+      navigate("/account");
+    }
+  }, [user, navigate]);
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
       <input name="email" type="email" placeholder="Email" required />
       <br />
       <input name="password" type="password" placeholder="Password" required />

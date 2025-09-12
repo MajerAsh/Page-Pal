@@ -28,7 +28,7 @@ export default function BookDetails() {
   const handleReserve = async () => {
     try {
       await reserveBook(book.id);
-    } catch (err) {
+    } catch {
       alert(`Sorry but ${book.title} is already check out by another user.`);
     }
   };
@@ -37,7 +37,7 @@ export default function BookDetails() {
   if (!book) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="book-details">
       <h2>{book.title}</h2>
       <p>
         <strong>Author:</strong> {book.author}

@@ -2,31 +2,36 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(
+    () => localStorage.getItem("token") || null
+  ); //staylogged in on refresh^
   const [user, setUser] = useState();
 
   useEffect(() => {
+    async function fetchUser() {
+      const res = await fetch(
+        "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await res.json();
+      if (!res.ok) throw new Error("Login failed");
+      setUser(data);
+    }
+
     if (token) {
-      getUser();
+      localStorage.setItem("token", token);
+      fetchUser();
+    } else {
+      localStorage.removeItem("token");
+      setUser(null);
     }
   }, [token]);
-
-  const getUser = async () => {
-    const res = await fetch(
-      "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const data = await res.json();
-    if (!res.ok) throw new Error("Login failed");
-    console.log("data", data);
-    setUser(data);
-  };
 
   const login = async ({ email, password }) => {
     const res = await fetch(
@@ -41,11 +46,13 @@ export function AuthProvider({ children }) {
     const data = await res.json();
     console.log("data", data);
     setToken(data.token);
+    localStorage.setItem("token", data.token);
   };
 
   const logout = async () => {
     setToken(null);
     setUser(null);
+    localStorage.removeItem("token"); // remove persist token from local storage
     console.log("Logout successful");
   };
 
@@ -61,6 +68,7 @@ export function AuthProvider({ children }) {
     if (!res.ok) throw new Error("Registration failed");
     const data = await res.json();
     setToken(data.token);
+    localStorage.setItem("token", data.token); // persist token
   };
 
   const reserveBook = async (bookId) => {
@@ -78,7 +86,18 @@ export function AuthProvider({ children }) {
     const reservation = await res.json();
 
     if (!res.ok) throw new Error(reservation.message);
-    await getUser();
+    const userRes = await fetch(
+      "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const userData = await userRes.json();
+    setUser(userData);
   };
 
   const returnBook = async (id) => {

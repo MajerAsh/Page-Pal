@@ -14,25 +14,38 @@ export default function Account() {
 
   return (
     <div>
-      <h2>Account</h2>
-      <p>Email: {user.email}</p>
-
-      <h3>Your Reservations</h3>
-      {user.reservations?.length > 0 ? (
-        <ul>
-          {user.reservations.map((r) => (
-            <li key={r?.id}>
-              <strong>{r?.title}</strong> by {r?.author}
-              <img src={r?.coverimage} alt={`cover image for ${r?.title}`} />
-              <p>{r?.description}</p>
-              <br />
-              <button onClick={() => returnBook(r?.id)}>Return</button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No reservations yet.</p>
-      )}
+      <h2>Hi, {user.firstname}!</h2>
+      <section className="account-card">
+        <h2>Account</h2>
+        <div className="account-info">
+          <strong>Name:</strong> {user.firstname}
+          {user.lastname ? ` ${user.lastname}` : ""}
+          <div>
+            <strong>Email:</strong> {user.email}
+          </div>
+        </div>
+        <div className="account-reservations">
+          <h3>Your Reservations</h3>
+          {user.reservations?.length > 0 ? (
+            <ul>
+              {user.reservations.map((r) => (
+                <li key={r?.id}>
+                  <strong>{r?.title}</strong> by {r?.author}
+                  <img
+                    src={r?.coverimage}
+                    alt={`cover image for ${r?.title}`}
+                  />
+                  <p>{r?.description}</p>
+                  <br />
+                  <button onClick={() => returnBook(r?.id)}>Return</button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No reservations yet.</p>
+          )}
+        </div>
+      </section>
     </div>
   );
 }
