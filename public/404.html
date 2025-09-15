@@ -1,1 +1,10 @@
-<meta http-equiv="refresh" content="0; url=/" />
+<script>
+  // Redirect all 404s to index.html
+  location.replace(
+    location.pathname
+      .replace(/\/PagePal/, "") // If your repo is a subfolder, adjust as needed
+      .replace(/\/[^\/]*$/, "/index.html") +
+      location.search +
+      location.hash
+  );
+</script>
