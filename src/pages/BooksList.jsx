@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import fillerImage from "../assets/filler.jpg";
 
 const API = "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books";
 
@@ -22,12 +23,12 @@ export default function BooksList() {
               {book.title}
               <br />
               <img
-                src={book.coverimage || ""}
-                alt={
-                  book.coverimage
-                    ? `Cover of ${book.title}`
-                    : `Image not available for ${book.title}`
-                }
+                src={book.coverimage}
+                alt={`Cover of ${book.title}`}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = fillerImage;
+                }}
               />
             </Link>
           </li>
