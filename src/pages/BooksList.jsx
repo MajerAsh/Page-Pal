@@ -16,6 +16,9 @@ export default function BooksList() {
   return (
     <>
       <h2>Book Catalog</h2>
+      <p className="caption">
+        Click a book to view more details or reserve it today.
+      </p>
       <ul>
         {books.map((book) => (
           <li key={book.id}>

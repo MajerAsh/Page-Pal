@@ -48,6 +48,12 @@ main {
   margin: 0 auto;
 }
 
+.caption {
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  font-size: 1rem;
+}
+
 img {
   max-width: 100%;
   height: auto;
