@@ -7,7 +7,7 @@ import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename="/PagePal">
+    <BrowserRouter basename="/Page-Pal">
       <App />
     </BrowserRouter>
   </StrictMode>
