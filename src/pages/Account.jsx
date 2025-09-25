@@ -26,20 +26,23 @@ export default function Account() {
         </div>
         <div className="account-reservations">
           <h3>Your Reservations</h3>
-          {user.reservations?.length > 0 ? (
+          {user.reservations?.filter((r) => r && r.title && r.author).length >
+          0 ? (
             <ul>
-              {user.reservations.map((r) => (
-                <li key={r?.id}>
-                  <strong>{r?.title}</strong> by {r?.author}
-                  <img
-                    src={r?.coverimage}
-                    alt={`cover image for ${r?.title}`}
-                  />
-                  <p>{r?.description}</p>
-                  <br />
-                  <button onClick={() => returnBook(r?.id)}>Return</button>
-                </li>
-              ))}
+              {user.reservations
+                .filter((r) => r && r.title && r.author)
+                .map((r) => (
+                  <li key={r?.id}>
+                    <strong>{r?.title}</strong> by {r?.author}
+                    <img
+                      src={r?.coverimage}
+                      alt={`cover image for ${r?.title}`}
+                    />
+                    <p>{r?.description}</p>
+                    <br />
+                    <button onClick={() => returnBook(r?.id)}>Return</button>
+                  </li>
+                ))}
             </ul>
           ) : (
             <p>No reservations yet.</p>
